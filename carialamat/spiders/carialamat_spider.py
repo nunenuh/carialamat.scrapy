@@ -18,8 +18,8 @@ class CariAlamatJakartaSpider(scrapy.Spider):
                 text = alamat.css("p::text")[-1].extract()
             
                 yield {
-                    'title': title,
-                    'text': text
+                    'name': title,
+                    'address': text
                 }
                 
 
@@ -62,13 +62,10 @@ class CariAlamatSpider(scrapy.Spider):
                 text = alamat.css("p::text")[-1].extract()
             
                 data =  {
-                    'title': title,
-                    'text': text
+                    'name': title,
+                    'address': text
                 }
-                # print(response.url)
-                # print(data)
                 yield data
-        # print()
                 
         self.curr_page = self.curr_page + 1
         
