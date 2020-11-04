@@ -39,7 +39,29 @@ class CariAlamatSpider(scrapy.Spider):
     name = 'carialamat'
     protocol = "https://"
     base_url = "carialamat.com"
-    sub_urls = ['jakarta','yogyakarta','surabaya','bandung']
+    sub_urls = [
+                'batam', 'padang', 'medan',
+                'balikpapan','banjarmasin','palangkaraya',
+                
+                'jakarta', 'bogor', 'tangerang', 'depok', 'bekasi','cianjur',
+                'ciamis','cirebon','garut','purwakarta','sumedang','sukabumi',
+                'karawang','tasikmalaya','bandung',
+                
+                'yogyakarta', 'cilacap',
+                'brebes','boyolali','jepara','demak','magelang',
+                'semarang','purworejo','pekalongan','tegal',
+
+                'banyuwangi','surabaya', 'malang', 'bangkalan','bojonegoro',
+                'gresik','lamongan','sidoarjo',
+                
+                'denpasar', 'gianyar', 'singaraja','tabanan',
+                
+                'makassar','palu', 
+                
+                'mataram', 'lombok',
+                
+                'jayapura','kupang'
+    ]
     
     curr_sub_urls_index = 0
     curr_page = 1
@@ -54,6 +76,7 @@ class CariAlamatSpider(scrapy.Spider):
     def parse(self, response):
         last_page_num  = response.css('p.block-paging > a::text')[-1].extract()
         last_page_num  = int(last_page_num.strip())
+        region = self.sub_urls[self.curr_sub_urls_index]
         
         for alamat in response.css("div.hasil-cari"):
             is_exists = alamat.css("h1").extract_first(default=False)
@@ -63,7 +86,8 @@ class CariAlamatSpider(scrapy.Spider):
             
                 data =  {
                     'name': title,
-                    'address': text
+                    'address': text,
+                    'region': region
                 }
                 yield data
                 
