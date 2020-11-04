@@ -7,7 +7,8 @@ This project extract name and address. The extracted data looks like sample :
 ```
 {
     'name': 'PT Victory Global Mandiri', 
-    'address': 'Gg Belimbing 12 RT 006/05 Jakarta            '
+    'address': 'Gg Belimbing 12 RT 006/05 Jakarta            ',
+    'region': 'jakarta'
 }
 ```
 
