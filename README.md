@@ -24,3 +24,10 @@ If you want to save the scraped data to a file, you can pass the -o option:
 ```
 $ scrapy crawl carialamat -o results/data.json
 ```
+
+## Running Converter
+You can convert json output data from scrapy crawl with this example command :
+
+```
+$ python converter.py --src_path results/data.json --dst_path results/data.csv
+```
