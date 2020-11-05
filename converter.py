@@ -12,10 +12,13 @@ def scrapy2dframe(json_file):
         'address': [],
         'region':[]
     }
-
+    
     for data in tqdm(datas):
-        alamat['name'].append(data['name'].strip())
-        alamat['address'].append(data['address'].strip())
+        name = str(data['name']).strip()
+        address = str(data['address']).strip()
+        
+        alamat['name'].append(name)
+        alamat['address'].append(address)
         alamat['region'].append(data['region'])
 
     df = pd.DataFrame(alamat)
