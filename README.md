@@ -12,6 +12,13 @@ This project extract name and address. The extracted data looks like sample :
 }
 ```
 
+## Usage
+Before you can use this repository, you need to install the requirement for this repo. Please type this command in your terminal:
+
+```
+$ pip install -r req.txt
+```
+
 ## Running The Spiders
 You can run a spider using the scrapy crawl command, such as:
 
